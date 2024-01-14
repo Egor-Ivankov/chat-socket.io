@@ -6,3 +6,8 @@ export interface Params {
     name?: string;
     room?: string;
 }
+
+export interface Messages {
+    name?: string;
+    message?: string;
+}

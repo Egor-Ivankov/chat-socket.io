@@ -50,12 +50,12 @@ function Authorization()  {
                     required
                 />
 
-                <button onClick={handleClick} className="container-form-button">
                     <Link to={`/chat?name=${values[userName]}&room=${values[userRoom]}`}
-                          className="container-form-button-link">
-                        Sign in
+                          className="container-form-link">
+                            <button onClick={handleClick} className="container-form-link-button">
+                                    Sign in
+                            </button>
                     </Link>
-                </button>
             </form>
         </section>
     );
