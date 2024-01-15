@@ -28,8 +28,7 @@
     &-button {
       width: 10%;
       height: 50%;
-      background-color: rgb(232, 47, 47);
-      color: white;
+      color: #1a1a1a;
       border: none;
       border-radius: 10px;
       font-size: 14px;
@@ -45,7 +44,7 @@
 
   &-main {
     height: 80%;
-    background-color: rgba(49, 49, 54, 0.76);
+      background-color: rgba(49, 49, 54, 0.76);
   }
 
   &-client {
