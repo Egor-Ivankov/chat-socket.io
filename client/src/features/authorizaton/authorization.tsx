@@ -25,13 +25,13 @@ function Authorization()  {
     }
 
     return (
-        <section className="container">
-            <h2 className="container-header">Hi, there!</h2>
-            <img src={questionMark} className="container-question" alt="question-mark"/>
-            <form className="container-form">
+        <section className="authorization-container">
+            <h2 className="authorization-container-header">Hi, there!</h2>
+            <img src={questionMark} className="authorization-container-question" alt="question-mark"/>
+            <form className="authorization-container-form">
                 <input
                     type="text"
-                    className="container-form-input"
+                    className="authorization-container-form-input"
                     placeholder="Enter your nickname"
                     name="userName"
                     value={values[userName]}
@@ -41,7 +41,7 @@ function Authorization()  {
                 />
                 <input
                     type="text"
-                    className="container-form-input"
+                    className="authorization-container-form-input"
                     placeholder="Enter room-name"
                     name="userRoom"
                     value={values[userRoom]}
@@ -51,8 +51,8 @@ function Authorization()  {
                 />
 
                     <Link to={`/chat?name=${values[userName]}&room=${values[userRoom]}`}
-                          className="container-form-link">
-                            <button onClick={handleClick} className="container-form-link-button">
+                          className="authorization-container-form-link">
+                            <button onClick={handleClick} className="authorization-container-form-link-button">
                                     Sign in
                             </button>
                     </Link>

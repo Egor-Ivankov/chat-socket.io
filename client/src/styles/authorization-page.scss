@@ -1,4 +1,4 @@
-.container {
+.authorization-container {
   width: 45vw;
   height: 45vh;
   background-color: rgba(49, 49, 54, 0.76);
@@ -6,6 +6,7 @@
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.37) 1px 1px 15px 5px;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 
