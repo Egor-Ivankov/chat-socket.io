@@ -1,18 +1,20 @@
 import {useEffect, useState} from "react";
 import {io, Socket} from 'socket.io-client';
 import {useLocation} from "react-router-dom";
-import {Params, Messages} from "../../types/form-types.ts";
+import {Params, MessagesType} from "../../types/form-types.ts";
 import EmojiPicker from "emoji-picker-react";
+import {EmojiClick} from "../../types/form-types.ts";
 import Send from '../../assets/send.png';
 import Emoji from '../../assets/emoji.png';
 import '../../styles/chat.scss';
+import UsersMessages from "../UsersMessages/users-messages.tsx";
 
 const socket: Socket = io('http://localhost:5311');
 function Chat() {
 
     const { search } = useLocation();
     const [params, setParams] = useState<Params>({room: '', name: ''});
-    const [messages, setMessages] = useState<Messages[] | []>([]);
+    const [messages, setMessages] = useState<MessagesType[] | []>([]);
     const [userMessage, setUserMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +41,7 @@ function Chat() {
     const handleSubmit = () => {
 
     }
-    const onEmojiClick = ({ emoji }) => {
+    const onEmojiClick: EmojiClick = ({ emoji }) => {
         setUserMessage((messages) => `${messages} ${emoji}` );
     };
 
@@ -55,7 +57,7 @@ function Chat() {
                 </button>
             </div>
             <div className='chat-container-main'>
-                {messages.map(({message}, i) => <span key={i}>{message}</span>)}
+                <UsersMessages messages={messages} name={params.name}/>
             </div>
             <form className='chat-container-client' onSubmit={handleSubmit}>
                 <input

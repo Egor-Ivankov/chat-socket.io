@@ -7,7 +7,17 @@ export interface Params {
     room?: string;
 }
 
-export interface Messages {
-    name?: string;
-    message?: string;
+export type MessagesType = {
+    message: string;
+    user: {
+        name: string,
+    }
 }
+
+export type MessagesProps = {
+    messages: MessagesType[];
+    name: string | undefined;
+}
+
+export type EmojiClick = (data: { emoji: string}) => void;
+

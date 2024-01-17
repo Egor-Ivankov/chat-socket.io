@@ -28,6 +28,7 @@
     &-button {
       width: 10%;
       height: 50%;
+      background-color: #cecdcd;;
       color: #1a1a1a;
       border: none;
       border-radius: 10px;
@@ -44,8 +45,24 @@
 
   &-main {
     height: 80%;
-      background-color: rgba(49, 49, 54, 0.76);
+    background-color: rgba(49, 49, 54, 0.76);
+    overflow: auto;
   }
+
+  &-main::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &-main::-webkit-scrollbar-track {
+    background: rgba(40, 40, 40, 0.85);
+  }
+
+  &-main::-webkit-scrollbar-thumb {
+    background-color: #cecdcd;
+    border-radius: 20px;
+    border: 1px solid rgba(49, 49, 54, 0.76);
+  }
+
 
   &-client {
     height: 10%;
@@ -108,6 +125,6 @@
 .emoji-picker {
     width: 200px;
     position: absolute;
-    top: 17%;
-    right: 12%;
+    top: 27%;
+    right: 12.9%;
 }

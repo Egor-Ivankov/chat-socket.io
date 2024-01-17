@@ -21,7 +21,6 @@ function Authorization()  {
         const isDisabled = Object.values(values).some(value => !value);
 
         if(isDisabled) e.preventDefault();
-        console.log(isDisabled)
     }
 
     return (
