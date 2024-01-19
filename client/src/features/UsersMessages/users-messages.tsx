@@ -1,12 +1,10 @@
 import React from 'react';
 import {MessagesProps} from "../../types/form-types.ts";
 import {nanoid} from "nanoid";
-import classNames from "classnames";
-import '../../styles/users-messages.scss';
+import styles from '../../styles/Messages.module.css';
 const UsersMessages: React.FC<MessagesProps> = ({ messages, name}) => {
-    const id = nanoid();
     return (
-        <>
+        <div className={styles.messages}>
             {messages.map(({user, message}) => {
                 let itsMe;
 
@@ -14,17 +12,17 @@ const UsersMessages: React.FC<MessagesProps> = ({ messages, name}) => {
                     itsMe = user.name.toLowerCase().trim() === name.toLowerCase().trim();
                 }
 
-                const messageClassName = classNames({'me': itsMe, 'not-me': !itsMe});
+                const className = itsMe ? styles.me : styles.user;
 
                 return (
-                    <div key={id} className="message">
-                        <p className="message-username">{user.name}</p>
-                        <p className={`message-${messageClassName}`}>{message}</p>
+                    <div key={nanoid()} className={`${styles.message} ${className}`}>
+                        <p className={styles.user}>{user.name}</p>
+                        <p className={styles.text}>{message}</p>
                     </div>
                 )
             })}
-        </>
-    );
+        </div>
+    )
 }
 
 export default UsersMessages;

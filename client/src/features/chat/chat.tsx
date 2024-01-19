@@ -15,7 +15,7 @@ function Chat() {
     const { search } = useLocation();
     const [params, setParams] = useState<Params>({room: '', name: ''});
     const [messages, setMessages] = useState<MessagesType[] | []>([]);
-    const [userMessage, setUserMessage] = useState('');
+    const [message, setUserMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -38,8 +38,14 @@ function Chat() {
         setUserMessage(value);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        if(!message) return;
+
+        socket.emit('sendMessage', {message, params});
+
+        setUserMessage('');
     }
     const onEmojiClick: EmojiClick = ({ emoji }) => {
         setUserMessage((messages) => `${messages} ${emoji}` );
@@ -66,7 +72,7 @@ function Chat() {
                     placeholder='Enter your message'
                     required
                     autoComplete='off'
-                    value={userMessage}
+                    value={message}
                     onChange={(e) => handleChange(e.target.value)}
                 />
 
