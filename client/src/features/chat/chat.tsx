@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {io, Socket} from 'socket.io-client';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Params, MessagesType} from "../../types/form-types.ts";
 import EmojiPicker from "emoji-picker-react";
 import {EmojiClick} from "../../types/form-types.ts";
@@ -13,10 +13,12 @@ const socket: Socket = io('http://localhost:5311');
 function Chat() {
 
     const { search } = useLocation();
+    const navigate = useNavigate();
     const [params, setParams] = useState<Params>({room: '', name: ''});
     const [messages, setMessages] = useState<MessagesType[] | []>([]);
     const [message, setUserMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [users, setUsers] = useState(0);
 
     useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search));
@@ -30,8 +32,15 @@ function Chat() {
         });
     }, []);
 
-    const leftRoom = () => {
+    useEffect(() => {
+        socket.on('changeRoom', ({ data: { users } }) => {
+            setUsers(users.length);
+        });
+    }, []);
 
+    const leftRoom = () => {
+        socket.emit('leftRoom', { params });
+        navigate('/');
     }
 
     const handleChange = (value: string) => {
@@ -55,7 +64,7 @@ function Chat() {
         <section className='chat-container'>
             <div className='chat-container-header'>
                 <p className='chat-container-header-paragraph'>{`Room: ${params?.room}`}</p>
-                <p className='chat-container-header-paragraph'>0 users in this room</p>
+                <p className='chat-container-header-paragraph'>{users} users in this room</p>
                 <button
                     onClick={leftRoom}
                     className='chat-container-header-button'>
