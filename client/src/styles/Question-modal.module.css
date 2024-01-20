@@ -1,0 +1,29 @@
+.modal {
+    position: fixed;
+    top: 5%;
+    right: 13%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(49, 49, 54, 0.658);
+    box-shadow: rgba(0, 0, 0, 0.37) 1px 1px 15px 5px;
+    width: 15vw;
+    height: 10vw;
+    transition: all .6s ease-in-out;
+}
+.header {
+    margin-bottom: 10px;
+    color: white;
+    font-size: 22px;
+    font-weight: normal;
+    letter-spacing: .6px;
+}
+
+.list {
+    list-style: none;
+}
+
+.li {
+    margin-bottom: 10px;
+    color: white;
+    letter-spacing: .6px;
+}

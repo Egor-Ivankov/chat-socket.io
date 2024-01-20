@@ -1,13 +1,13 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, SyntheticEvent} from "react";
 import {io, Socket} from 'socket.io-client';
 import {useLocation, useNavigate} from "react-router-dom";
 import {Params, MessagesType} from "../../types/form-types.ts";
 import EmojiPicker from "emoji-picker-react";
 import {EmojiClick} from "../../types/form-types.ts";
+import UsersMessages from "../user-messages/users-messages.tsx";
 import Send from '../../assets/send.png';
 import Emoji from '../../assets/emoji.png';
 import '../../styles/chat.scss';
-import UsersMessages from "../UsersMessages/users-messages.tsx";
 
 const socket: Socket = io('http://localhost:5311');
 function Chat() {
@@ -18,7 +18,7 @@ function Chat() {
     const [messages, setMessages] = useState<MessagesType[] | []>([]);
     const [message, setUserMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [users, setUsers] = useState(0);
+    const [users, setUsers] = useState(1);
 
     useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search));
@@ -47,7 +47,7 @@ function Chat() {
         setUserMessage(value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
 
         if(!message) return;

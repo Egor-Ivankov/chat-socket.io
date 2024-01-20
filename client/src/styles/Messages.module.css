@@ -19,6 +19,7 @@
     border-radius: 12px;
     font-size: 17px;
     color: white;
+    word-wrap:break-word
 }
 
 .user {
