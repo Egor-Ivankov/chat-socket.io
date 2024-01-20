@@ -18,7 +18,7 @@ function Chat() {
     const [messages, setMessages] = useState<MessagesType[] | []>([]);
     const [message, setUserMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [users, setUsers] = useState(1);
+    const [users, setUsers] = useState(0);
 
     useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search));
