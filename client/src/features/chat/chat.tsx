@@ -7,7 +7,7 @@ import {EmojiClick} from "../../types/form-types.ts";
 import UsersMessages from "../user-messages/users-messages.tsx";
 import Send from '../../assets/send.png';
 import Emoji from '../../assets/emoji.png';
-import '../../styles/chat.scss';
+import styles from '../../styles/Chat.module.css';
 
 const socket: Socket = io('http://localhost:5311');
 function Chat() {
@@ -61,22 +61,22 @@ function Chat() {
     };
 
     return (
-        <section className='chat-container'>
-            <div className='chat-container-header'>
-                <p className='chat-container-header-paragraph'>{`Room: ${params?.room}`}</p>
-                <p className='chat-container-header-paragraph'>{users} users in this room</p>
+        <section className={styles.container}>
+            <div className={styles.header}>
+                <p className={styles.paragraph}>{`Room: ${params?.room}`}</p>
+                <p className={styles.paragraph}>{users} users in this room</p>
                 <button
                     onClick={leftRoom}
-                    className='chat-container-header-button'>
+                    className={styles.leftRoom}>
                     Left the room
                 </button>
             </div>
-            <div className='chat-container-main'>
+            <div className={styles.main}>
                 <UsersMessages messages={messages} name={params.name}/>
             </div>
-            <form className='chat-container-client' onSubmit={handleSubmit}>
+            <form className={styles.client} onSubmit={handleSubmit}>
                 <input
-                    className="chat-container-client-input"
+                    className={styles.userMessage}
                     type='text'
                     placeholder='Enter your message'
                     required
@@ -88,18 +88,18 @@ function Chat() {
                 <img
                     src={Emoji}
                     alt="emoji"
-                    className='chat-container-client-emoji'
+                    className={styles.emoji}
                     onClick={() => setIsOpen(!isOpen)}
                 />
 
-                <button className="chat-container-client-button" type="submit">
+                <button className={styles.sendMessage} type="submit">
                     Send
-                    <img src={Send} alt='send-icon' className="chat-container-client-button-icon"/>
+                    <img src={Send} alt='send-icon' className={styles.sendIcon}/>
                 </button>
 
                 {
                     isOpen && (
-                        <div className='emoji-picker'>
+                        <div className={styles.emojiPicker}>
                             <EmojiPicker onEmojiClick={onEmojiClick}/>
                         </div>
                     )

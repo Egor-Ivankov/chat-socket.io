@@ -3,7 +3,7 @@ import questionMark from '../../assets/question-mark.png';
 import QuestionModal from "../question-modal/question-modal.tsx";
 import {Link} from "react-router-dom";
 import {AuthorizationInputs} from "../../types/form-types.ts";
-import '../../styles/authorization-page.scss';
+import styles from '../../styles/Authorization.module.css';
 
 const fields = {
     userName: 'userName',
@@ -26,12 +26,12 @@ function Authorization()  {
     }
 
     return (
-        <section className="authorization-container" onClick={() => setIsViewModal(false)}>
+        <section className={styles.container} onClick={() => setIsViewModal(false)}>
 
-            <h2 className="authorization-container-header">Hi, there!</h2>
+            <h2 className={styles.header}>Hi, there!</h2>
 
             <img src={questionMark} 
-                className="authorization-container-question" 
+                className={styles.question}
                 alt="question-mark" 
                 onClick={(e) => {
                     e.stopPropagation();
@@ -39,11 +39,11 @@ function Authorization()  {
                 }}
             />
 
-            <form className="authorization-container-form">
+            <form className={styles.form}>
 
                 <input
                     type="text"
-                    className="authorization-container-form-input"
+                    className={styles.inputs}
                     placeholder="Enter your nickname"
                     name="userName"
                     value={values[userName]}
@@ -54,7 +54,7 @@ function Authorization()  {
 
                 <input
                     type="text"
-                    className="authorization-container-form-input"
+                    className={styles.inputs}
                     placeholder="Enter room-name"
                     name="userRoom"
                     value={values[userRoom]}
@@ -64,8 +64,8 @@ function Authorization()  {
                 />
 
                 <Link to={`/chat?name=${values[userName]}&room=${values[userRoom]}`}
-                    className="authorization-container-form-link">
-                        <button onClick={handleClick} className="authorization-container-form-link-button">
+                    className={styles.link}>
+                        <button onClick={handleClick} className={styles.signIn}>
                                 Sign in
                         </button>
                 </Link>
